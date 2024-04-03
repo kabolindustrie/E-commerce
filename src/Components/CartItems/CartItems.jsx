@@ -20,13 +20,14 @@ const CartItems = () => {
         if (cartItems[e.id] > 0)
           return (
             <div>
-              <div className="cartitems-format">
+              <div className="cartitems-format cartitems-format-main">
                 <img className="caricon-product-icon" src={e.image} alt="" />
                 <p>{e.name}</p>
                 <p>{e.new_price}</p>
                 <button className="caritems-quantity">{cartItems[e.id]}</button>
-                <p>{e.new_price * cartItems[e.id]}</p>
+                <p>${e.new_price * cartItems[e.id]}</p>
                 <img
+                  className="cartitems-remove-icon"
                   src={remove_icon}
                   onClick={() => {
                     removeFromCart(e.id);
@@ -37,7 +38,34 @@ const CartItems = () => {
               <hr />
             </div>
           );
+          return null;
       })}
+      <div className="caritems-down">
+        <div className="cartitems-total">
+          <h1>cart Totals</h1>
+          <div>
+            <div className="cartitems-total-item">
+              <p>Subtotal</p>
+              <p>${0}</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <p>Shipping Fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <h3>Total</h3>
+              <h3>${0}</h3>
+            </div>
+          </div>
+          <button>PROCEED TO CHECKOUT</button>
+        </div>
+        <div className="cartitems-promocode">
+          <p>If you have a promo code, Enter it here</p>
+          <div className="cartitems-promobox"></div>
+        </div>
+      </div>
     </div>
   );
 };
